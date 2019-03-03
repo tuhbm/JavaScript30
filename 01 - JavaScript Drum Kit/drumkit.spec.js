@@ -1,13 +1,13 @@
-const playSound = require('./drumkit').playSound;
-const removeTransition = require('./drumkit').removeTransition;
+const playSound = require('./drumkit').playSound
+const removeTransition = require('./drumkit').removeTransition
 
 test('playSound should be a function.', () => {
-  expect(typeof playSound).toBe('function');
-});
+  expect(typeof playSound).toBe('function')
+})
 
 test('removeTransition should be a function.', () => {
-  expect(typeof removeTransition).toBe('function');
-});
+  expect(typeof removeTransition).toBe('function')
+})
 
 test('After playSound being called a div with key class should have a playing class.', () => {
   // create inner html to test ui
@@ -62,17 +62,17 @@ test('After playSound being called a div with key class should have a playing cl
     <audio data-key='74' src="sounds/snare.wav"></audio>
     <audio data-key='75' src="sounds/tom.wav"></audio>
     <audio data-key='76' src="sounds/tink.wav"></audio> 
-  `;
+  `
 
   // mock event
   const event = {
     keyCode: 65
-  };
+  }
 
   // there is no support to media operations(play, load..) in jsdom
-  window.HTMLMediaElement.prototype.play = () => { /* do nothing */ };
-  playSound(event);
+  window.HTMLMediaElement.prototype.play = () => { /* do nothing */ }
+  playSound(event)
 
-  const key = document.querySelector(`.key[data-key="${event.keyCode}"]`);
-  expect(key.classList.contains('playing')).toBeTruthy();
-});
+  const key = document.querySelector(`.key[data-key="${event.keyCode}"]`)
+  expect(key.classList.contains('playing')).toBeTruthy()
+})

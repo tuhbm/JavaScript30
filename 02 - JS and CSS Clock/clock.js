@@ -3,15 +3,15 @@
  * @param {object} counter - hold time variable
  */
 function tick(counter) {
-  const sec = getHand('.clock .sec');
-  const min = getHand('.clock .min');
-  const hour = getHand('.clock .hour');
+  const sec = getHand('.clock .sec')
+  const min = getHand('.clock .min')
+  const hour = getHand('.clock .hour')
 
-  rotateHand(sec, counter.getCount() * 360 / 60 - 90);
-  rotateHand(min, Math.trunc(counter.getCount() / 60) * 360 / 60 - 90);
-  rotateHand(hour, Math.trunc(counter.getCount() / (60 * 60)) * 360 / 12 - 90);
+  rotateHand(sec, counter.getCount() * 360 / 60 - 90)
+  rotateHand(min, Math.trunc(counter.getCount() / 60) * 360 / 60 - 90)
+  rotateHand(hour, Math.trunc(counter.getCount() / (60 * 60)) * 360 / 12 - 90)
 
-  counter.increase();
+  counter.increase()
 }
 
 /**
@@ -20,7 +20,7 @@ function tick(counter) {
  * @returns found html element by the selector
  */
 function getHand(selector) {
-  return document.querySelector(selector);
+  return document.querySelector(selector)
 }
 
 /**
@@ -29,7 +29,7 @@ function getHand(selector) {
  * @param {number} degree 
  */
 function rotateHand(element, degree) {
-  element.style.transform = `rotate(${degree}deg)`;
+  element.style.transform = `rotate(${degree}deg)`
 }
 
 /**
@@ -37,24 +37,24 @@ function rotateHand(element, degree) {
  * @returns an object with two methods
  */
 function createCounter() {
-  let count = 0;
+  let count = 0
 
   return {
     getCount: () => {
-      return count; 
+      return count 
     },
     increase: () => {
-      count++;
+      count++
     }
-  };
+  }
 }
 
 // create a counter and call tick every second
-const counter = createCounter();
-setInterval(() => {tick(counter)}, 1000);
+const counter = createCounter()
+setInterval(() => tick(counter), 1000)
 
 module.exports = {
   getHand: getHand,
   rotateHand: rotateHand,
   createCounter: createCounter
-};
+}
