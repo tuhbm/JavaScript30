@@ -23,3 +23,6 @@
 
 - <https://www.youtube.com/watch?v=VuN8qwZoego&list=PLu8EoSxDXHP6CGK4YVJhL_VWetA865GOH>
 
+## 19년 02월 마지막주
+- 1강 드럼
+- 2강 시계
