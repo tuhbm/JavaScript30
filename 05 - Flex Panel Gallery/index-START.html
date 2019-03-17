@@ -151,9 +151,11 @@ function toggleOpen() {
 }
 
 function removeClassNameIsOpen() {
-  for(let i = 0; i < panels.length; i++){
-    panels[i].classList.remove('open');
-  }// 더 좋은 방법이 있다면 아버지 정답을 알려줘~!!!
+  panels.forEach(panel => panel.classList.remove('open'));
+
+  // for(let i = 0; i < panels.length; i++){
+  //   panels[i].classList.remove('open');
+  // }// 더 좋은 방법이 있다면 아버지 정답을 알려줘~!!!
 }
 
 function toggleActive(e) {
