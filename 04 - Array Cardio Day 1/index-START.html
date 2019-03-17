@@ -54,7 +54,7 @@
     // 5. Sort the inventors by years lived
     const oldest = inventors.sort((a,b) => {
       const lastPeople = a.passed - a.year;
-      const nextPeople = a.passed - a.year;
+      const nextPeople = b.passed - b.year;
       return lastPeople > nextPeople ? 1 : -1
     });
     console.table(oldest);
