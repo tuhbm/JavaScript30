@@ -29,22 +29,26 @@ fetch(endpoint)
 function findMatches(wordToMatch, cities) {
   return cities.filter(place => {
     const regex = new RegExp(wordToMatch, 'gi');
-    // 정규표현식 왜쓴다는거지..gi는 뭐지...?
+    // 정규표현식 왜 쓴다는거지..gi는 뭐지...?
     // gi에 대한 답 http://egloos.zum.com/nomasumer/v/9328413
     return place.city.match(regex) || place.state.match(regex);
   });
 }
 
 function numberWithCommas(x) {
-  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','); // backslach alt+|키 \\
+  return escapeRegExp(x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')); // backslach alt+|키 \\
+}
+
+function escapeRegExp(string) {
+  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
 }
 
 function displayMatches() {
   const matchArray = findMatches(this.value, cities)
   const listHtml = matchArray.map(place => {
     const regex = new RegExp(this.value, 'gi');
-    const cityName = place.city.replace(regex, `<span class="h1">${this.value}</span>`);
-    const stateName = place.state.replace(regex, `<span class="h1">${this.value}</span>`);
+    const cityName = place.city.replace(regex, `<span class="hl">${this.value}</span>`);
+    const stateName = place.state.replace(regex, `<span class="hl">${this.value}</span>`);
     return `
         <li>
             <span class="name">${cityName}, ${stateName}</span>
